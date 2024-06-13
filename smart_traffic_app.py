@@ -87,3 +87,5 @@ prediction = rf_model.predict(scaled_input)
 
 # Display the prediction to the user
 st.header(f'Predicted number of vehicles: {round(prediction[0])}')
+except Exception as e:
+    st.error(f"Error: {e}")
