@@ -10,17 +10,23 @@ from io import BytesIO
 def download_file_from_github(repo_url, file_name):
     url = f"{repo_url}/raw/main/{file_name}"
     print(f"Downloading {file_name} from {url}")
-    response = requests.get(url)
-    if response.status_code == 200:
-        return BytesIO(response.content)
-    else:
-        raise Exception(f"Failed to download file {file_name} from GitHub. Status code: {response.status_code}")
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return BytesIO(response.content)
+        else:
+            raise Exception(f"Failed to download file {file_name} from GitHub. Status code: {response.status_code}")
+    except Exception as e:
+        raise Exception(f"Error downloading {file_name} from GitHub: {e}")
 
 # Function to extract rf_model.pkl from rf_model.zip
 def extract_rf_model_zip(zip_file_content):
-    with zipfile.ZipFile(zip_file_content, 'r') as zip_ref:
-        zip_ref.extractall('./temp')  # Extracts all files to ./temp directory
-        return './temp/rf_model.pkl'  # Return the path to rf_model.pkl
+    try:
+        with zipfile.ZipFile(zip_file_content, 'r') as zip_ref:
+            zip_ref.extractall('./temp')  # Extracts all files to ./temp directory
+            return './temp/rf_model.pkl'  # Return the path to rf_model.pkl
+    except Exception as e:
+        raise Exception(f"Error extracting rf_model.pkl from zip: {e}")
 
 # GitHub repository URL
 repo_url = "https://github.com/Sujalsinh12345/upskillcampus"
