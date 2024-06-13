@@ -33,7 +33,7 @@ def extract_rf_model_zip(zip_file_content):
 repo_url = "https://github.com/Sujalsinh12345/upskillcampus"
 
 # Streamlit app
-st.title("Traffic Prediction App")
+st.title("Traffic Prediction App",print(sklearn.__version__),sklearn.__version__)
 st.header("Make a Prediction")
 
 try:
