@@ -8,11 +8,12 @@ from io import BytesIO
 # Function to download file from GitHub
 def download_file_from_github(repo_url, file_name):
     url = f"{repo_url}/raw/main/{file_name}"
+    print(f"Downloading {file_name} from {url}")
     response = requests.get(url)
     if response.status_code == 200:
         return BytesIO(response.content)
     else:
-        raise Exception(f"Failed to download file {file_name} from GitHub")
+        raise Exception(f"Failed to download file {file_name} from GitHub. Status code: {response.status_code}")
 
 # GitHub repository URL
 repo_url = "https://github.com/Sujalsinh12345/upskillcampus"
@@ -63,6 +64,7 @@ try:
     df_input_encoded = df_input_encoded[feature_columns]
 
     # Scale the input data
+    scaler.fit(df_input_encoded)
     scaled_input = scaler.transform(df_input_encoded)
 
     # Make the prediction
