@@ -50,9 +50,11 @@ try:
     feature_columns_file = download_file_from_github(repo_url, "feature_columns.pkl")
     feature_columns = joblib.load(feature_columns_file)
 
-    # Download scaler.pkl from GitHub
     scaler_file = download_file_from_github(repo_url, "scaler.pkl")
     scaler = joblib.load(scaler_file)
+
+    feature_columns_file = download_file_from_github(repo_url, "feature_columns.pkl")
+    feature_columns = joblib.load(feature_columns_file)
 
     # User inputs for prediction
     junction = st.selectbox("Select Junction", [1, 2, 3, 4])
@@ -80,8 +82,7 @@ try:
     # Ensure columns order
     df_input_encoded = df_input_encoded[feature_columns]
 
-    # Scale the input data
-    scaler.fit(df_input_encoded)
+    # Scale the input data using the pre-fitted scaler
     scaled_input = scaler.transform(df_input_encoded)
 
     # Make the prediction
