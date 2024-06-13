@@ -5,7 +5,7 @@ import zipfile
 import joblib
 from sklearn.preprocessing import StandardScaler
 from io import BytesIO
-
+import sklearn
 
 # Function to download file from GitHub
 def download_file_from_github(repo_url, file_name):
@@ -33,7 +33,8 @@ def extract_rf_model_zip(zip_file_content):
 repo_url = "https://github.com/Sujalsinh12345/upskillcampus"
 
 # Streamlit app
-st.title("Traffic Prediction App",print(sklearn.__version__),sklearn.__version__)
+print(sklearn.__version__)
+st.title("Traffic Prediction App")
 st.header("Make a Prediction")
 
 try:
