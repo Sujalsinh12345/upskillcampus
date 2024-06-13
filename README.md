@@ -1,7 +1,7 @@
 # Smart Traffic Prediction App
 **Smart city-Forecasting of Smart city traffic patterns**
 ## 🌐 About the Project
-![Traffic Prediction App](https://upskillcampus-sujalsinh.streamlit.app/)
+[Traffic Prediction App](https://upskillcampus-sujalsinh.streamlit.app/)
 ![Project Preview](https://github.com/Sujalsinh12345/upskillcampus/assets/91388825/4473e0c8-30f8-4c90-969d-a5dd6712c011)
 
 
