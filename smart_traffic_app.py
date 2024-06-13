@@ -4,9 +4,8 @@ import requests
 import zipfile
 import joblib
 from sklearn.preprocessing import StandardScaler
-from sklearn.tree import DecisionTreeRegressor
 from io import BytesIO
-import sklearn
+
 
 # Function to download file from GitHub
 def download_file_from_github(repo_url, file_name):
