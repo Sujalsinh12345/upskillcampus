@@ -1,7 +1,7 @@
 # Smart Traffic Prediction App
 **Smart city-Forecasting of Smart city traffic patterns**
 ## 🌐 About the Project
-
+![Traffic Prediction App](https://upskillcampus-sujalsinh.streamlit.app/)
 ![Project Preview](https://github.com/Sujalsinh12345/upskillcampus/assets/91388825/4473e0c8-30f8-4c90-969d-a5dd6712c011)
 
 
@@ -10,7 +10,6 @@ UCT is working with the government to transform various cities into a smart city
 
 The government wants to implement a robust traffic system for the city by being prepared for traffic peaks. They want to understand the traffic patterns of the four junctions of the city. Traffic patterns on holidays, as well as on various other occasions during the year, differ from normal working days. This is important to take into account for my forecasting.
 
-![Traffic Prediction App](https://k5wbawabfsasjbkgz4djcn.streamlit.app/)
 
 ## Overview
 
