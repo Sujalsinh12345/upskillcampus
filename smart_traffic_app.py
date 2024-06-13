@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+import zipfile
 import joblib
 from sklearn.preprocessing import StandardScaler
 from io import BytesIO
@@ -15,6 +16,12 @@ def download_file_from_github(repo_url, file_name):
     else:
         raise Exception(f"Failed to download file {file_name} from GitHub. Status code: {response.status_code}")
 
+# Function to extract rf_model.pkl from rf_model.zip
+def extract_rf_model_zip(zip_file_content):
+    with zipfile.ZipFile(zip_file_content, 'r') as zip_ref:
+        zip_ref.extractall('./temp')  # Extracts all files to ./temp directory
+        return './temp/rf_model.pkl'  # Return the path to rf_model.pkl
+
 # GitHub repository URL
 repo_url = "https://github.com/Sujalsinh12345/upskillcampus"
 
@@ -23,11 +30,14 @@ st.title("Traffic Prediction App")
 st.header("Make a Prediction")
 
 try:
-    # Download rf_model.pkl from GitHub
+    # Download rf_model.zip from GitHub
     st.write("Downloading model file...")
-    rf_model_file = download_file_from_github(repo_url, "rf_model.pkl")
-    rf_model = joblib.load(rf_model_file)
-    st.success("Model file downloaded successfully!")
+    rf_model_zip_file = download_file_from_github(repo_url, "rf_model.zip")
+
+    # Extract rf_model.pkl from rf_model.zip
+    rf_model_pkl_path = extract_rf_model_zip(rf_model_zip_file)
+    rf_model = joblib.load(rf_model_pkl_path)
+    st.success("Model file extracted and loaded successfully!")
 
     # Download feature_columns.pkl from GitHub
     feature_columns_file = download_file_from_github(repo_url, "feature_columns.pkl")
